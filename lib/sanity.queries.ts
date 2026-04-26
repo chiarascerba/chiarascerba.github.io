@@ -4,7 +4,7 @@ export const articlesQuery = groq`
   *[_type == "article"] | order(date desc) {
     "id": _id,
     title,
-    testate,
+    "testate": testata,
     date,
     "category": category->title,
     abstract,
