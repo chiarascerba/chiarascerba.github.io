@@ -96,7 +96,7 @@ export default function ContattiPage() {
               marginBottom: '3rem',
               maxWidth: '440px',
             }}>
-              Sei una testata in cerca di una nuova firma o un&apos;azienda che vuole strutturare la propria comunicazione? Scrivimi per parlarne.
+              Cerchi una penna autorevole che sappia raccontare la realtà o necessiti di strutturare la tua comunicazione? Scrivimi per parlarne.
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '3rem' }}>
