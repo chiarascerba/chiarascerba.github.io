@@ -10,18 +10,18 @@ export const metadata: Metadata = {
   },
   description:
     'Portfolio professionale di Chiara Scerba, giornalista e consulente di comunicazione aziendale. Articoli su economia, tecnologia, sostenibilità e case study di comunicazione strategica.',
-  keywords: ['giornalista', 'comunicazione aziendale', 'consulente', 'brand journalism', 'content strategy'],
+  keywords: ['Affari europei', 'giornalista', 'comunicazione aziendale', 'consulente', 'content strategy'],
   openGraph: {
     type: 'website',
     locale: 'it_IT',
     siteName: 'Chiara Scerba',
-    title: 'Chiara Scerba – Giornalista & Consulente di Comunicazione',
+    title: 'Chiara Scerba – Giornalista & Content Strategist',
     description:
-      'Portfolio professionale di Chiara Scerba, giornalista e consulente di comunicazione aziendale.',
+      'Portfolio professionale di Chiara Scerba, giornalista e content strategist.',
   },
   twitter: {
     card: 'summary_large_image',
-    creator: '@chiaraROSSI',
+    creator: '@chiarascerba',
   },
 };
 

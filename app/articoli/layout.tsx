@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: 'Articoli',
-  description: 'Archivio degli articoli scritti da Chiara Scerba su economia, tecnologia, sostenibilità e interviste.',
+  description: 'Archivio degli articoli scritti',
 };
 
 export default function ArticoliLayout({ children }: { children: React.ReactNode }) {

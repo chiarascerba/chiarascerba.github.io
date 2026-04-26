@@ -18,7 +18,7 @@ const services = [
   {
     icon: <Feather size={28} />,
     title: 'Giornalismo',
-    desc: 'Reportage, interviste e analisi per le principali testate italiane. Economia, tecnologia, sostenibilità, cultura d\'impresa.',
+    desc: 'Reportage, interviste e analisi. Specializzata in Affari Europei, Cronaca Italiana.',
   },
   {
     icon: <Building2 size={28} />,
@@ -87,7 +87,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
                 marginBottom: '1.5rem',
               }}
             >
-              Giornalista · Consulente · Storyteller
+              Giornalista · Consulente · Content Strategist
             </motion.p>
 
             <motion.h1
@@ -123,8 +123,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
                 marginBottom: '2.5rem',
               }}
             >
-              Giornalista con oltre 10 anni di esperienza nelle principali testate
-              italiane e consulente di comunicazione strategica per aziende e startup.
+              Giornalista con esperienza e consulente di comunicazione strategica per aziende e startup.
             </motion.p>
 
             <motion.div
@@ -228,10 +227,10 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
             padding: '1.5rem',
           }}>
             {[
-              { value: '10+', label: 'Anni di esperienza' },
-              { value: '200+', label: 'Articoli pubblicati' },
-              { value: '15+', label: 'Testate collaborate' },
-              { value: '30+', label: 'Aziende clienti' },
+              { value: '3+', label: 'Anni di esperienza' },
+              { value: '40+', label: 'Articoli pubblicati' },
+              { value: '1+', label: 'Testate collaborate' },
+              { value: '2+', label: 'Aziende clienti' },
             ].map((stat) => (
               <div key={stat.label} style={{ textAlign: 'center' }}>
                 <div style={{

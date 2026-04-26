@@ -23,7 +23,7 @@ export default async function ArticoliPage() {
             color: 'var(--navy)',
             marginBottom: '1rem',
           }}>
-            Articoli e Analisi
+            Articoli
           </h1>
           <p style={{
             fontSize: '1.1rem',
@@ -32,7 +32,7 @@ export default async function ArticoliPage() {
             margin: '0 auto',
             lineHeight: 1.6,
           }}>
-            Una selezione di inchieste, reportage e interviste pubblicate sulle principali testate nazionali.
+            Una selezione di articoli pubblicati sulle varie testate.
           </p>
         </div>
       </section>
