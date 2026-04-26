@@ -49,7 +49,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
       {/* ── HERO ── */}
       <section style={{
         minHeight: 'calc(100vh - 72px)',
-        background: 'linear-gradient(135deg, #153026 0%, #1e4537 60%, #0d1f19 100%)',
+        background: 'linear-gradient(135deg, #1e4d3b 0%, #2a6b52 60%, #163a2c 100%)',
         display: 'flex',
         alignItems: 'center',
         position: 'relative',

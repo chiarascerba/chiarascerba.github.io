@@ -58,7 +58,7 @@ export default function AboutPage() {
     <>
       {/* ── PAGE HEADER ── */}
       <section style={{
-        background: 'linear-gradient(180deg, var(--navy) 0%, #243a62 100%)',
+        background: 'linear-gradient(180deg, var(--navy) 0%, var(--navy-light) 100%)',
         padding: '5rem 0 6rem',
         textAlign: 'center',
       }}>
