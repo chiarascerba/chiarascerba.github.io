@@ -5,8 +5,8 @@ const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET;
 const apiVersion = process.env.NEXT_PUBLIC_SANITY_API_VERSION;
 
 export const client = createClient({
-  projectId,
-  dataset,
-  apiVersion,
-  useCdn: false, // Per SSG/ISR è meglio false per avere dati sempre aggiornati durante la build
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-04-26',
+  useCdn: false,
 });
