@@ -1,32 +1,44 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
-import { client } from '@/lib/sanity.client';
+import { createClient } from 'next-sanity';
 import { projectsQuery, projectBySlugQuery } from '@/lib/sanity.queries';
 import type { Metadata } from 'next';
+
+// Inizializzazione diretta per evitare problemi di importazione durante la build static analysis
+const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || 'u71i3zyz',
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+  apiVersion: '2024-04-26',
+  useCdn: false,
+});
 
 export const dynamicParams = false;
 
 export async function generateStaticParams() {
   try {
     const projects = await client.fetch(projectsQuery);
-    if (!projects || projects.length === 0) {
-      // Ritorna un array vuoto o un placeholder se non ci sono progetti
-      return [];
-    }
-    return projects.map((project: any) => ({
+    const params = projects?.map((project: any) => ({
       slug: project.slug,
-    }));
-  } catch (error) {
-    console.error("Error fetching projects for static params:", error);
-    return [];
+    })) || [];
+    
+    // Se non ci sono progetti, aggiungiamo un placeholder per "ingannare" la build di Next.js
+    if (params.length === 0) {
+      return [{ slug: 'placeholder' }];
+    }
+    
+    return params;
+  } catch (e) {
+    return [{ slug: 'placeholder' }];
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const p = await params;
-  const project = await client.fetch(projectBySlugQuery, { slug: p.slug });
+  const { slug } = await params;
   
+  if (slug === 'placeholder') return { title: 'Progetto' };
+
+  const project = await client.fetch(projectBySlugQuery, { slug });
   if (!project) return { title: 'Progetto Non Trovato' };
   
   return {
@@ -36,8 +48,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
-  const p = await params;
-  const project = await client.fetch(projectBySlugQuery, { slug: p.slug });
+  const { slug } = await params;
+
+  if (slug === 'placeholder') {
+    return (
+      <div style={{ padding: '10rem 0', textAlign: 'center' }}>
+        <h2>In attesa del primo progetto...</h2>
+        <Link href="/studio">Vai allo studio per inserire contenuti</Link>
+      </div>
+    );
+  }
+
+  const project = await client.fetch(projectBySlugQuery, { slug });
 
   if (!project) {
     notFound();
