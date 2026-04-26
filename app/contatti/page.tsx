@@ -13,10 +13,23 @@ export default function ContattiPage() {
     
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_KEY || 'YOUR_FORMSPREE_ID';
+    
+    // Recupera l'ID o l'URL completo dalla variabile d'ambiente
+    const formspreeSource = process.env.NEXT_PUBLIC_FORMSPREE_URL || process.env.NEXT_PUBLIC_FORMSPREE_KEY;
+    
+    if (!formspreeSource) {
+      console.error("Formspree ID/URL missing!");
+      setFormStatus('error');
+      return;
+    }
+
+    // Se è un ID (8 caratteri), costruisce l'URL, altrimenti usa l'URL fornito
+    const endpoint = formspreeSource.includes('http') 
+      ? formspreeSource 
+      : `https://formspree.io/f/${formspreeSource}`;
 
     try {
-      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+      const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
