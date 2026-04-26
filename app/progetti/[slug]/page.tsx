@@ -5,6 +5,24 @@ import { client } from '@/lib/sanity.client';
 import { projectsQuery, projectBySlugQuery } from '@/lib/sanity.queries';
 import type { Metadata } from 'next';
 
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  try {
+    const projects = await client.fetch(projectsQuery);
+    if (!projects || projects.length === 0) {
+      // Ritorna un array vuoto o un placeholder se non ci sono progetti
+      return [];
+    }
+    return projects.map((project: any) => ({
+      slug: project.slug,
+    }));
+  } catch (error) {
+    console.error("Error fetching projects for static params:", error);
+    return [];
+  }
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const p = await params;
   const project = await client.fetch(projectBySlugQuery, { slug: p.slug });
@@ -15,15 +33,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: project.title,
     description: project.summary,
   };
-}
-
-export const dynamicParams = false;
-
-export async function generateStaticParams() {
-  const projects = await client.fetch(projectsQuery);
-  return projects.map((project: any) => ({
-    slug: project.slug,
-  })) || [];
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
