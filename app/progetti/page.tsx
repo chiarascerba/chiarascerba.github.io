@@ -33,6 +33,7 @@ export default async function ProgettiPage() {
             fontFamily: "'Playfair Display', serif",
             fontSize: 'clamp(2.5rem, 5vw, 3.5rem)',
             marginBottom: '1rem',
+            color: 'white',
           }}>
             Dalla Strategia ai Risultati
           </h1>

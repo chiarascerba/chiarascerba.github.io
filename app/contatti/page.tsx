@@ -189,7 +189,7 @@ export default function ContattiPage() {
       {/* Newsletter Strip */}
       <section style={{ background: 'var(--navy)', padding: '5rem 0', textAlign: 'center', color: 'white' }}>
         <div className="container" style={{ maxWidth: '600px' }}>
-          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '1rem' }}>
+          <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', marginBottom: '1rem', color: 'white' }}>
             Iscriviti alla Newsletter
           </h2>
           <p style={{ color: 'rgba(255,255,255,0.7)', marginBottom: '2rem', lineHeight: 1.6 }}>
