@@ -421,7 +421,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
           right: 0;
           background: rgba(0,0,0,0.25);
           backdrop-filter: blur(8px);
-          border-top: '1px solid rgba(201,169,110,0.2)';
+          border-top: 1px solid rgba(201,169,110,0.2);
         }
 
         @media (max-width: 992px) {
