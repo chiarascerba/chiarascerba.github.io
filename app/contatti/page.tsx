@@ -10,15 +10,31 @@ export default function ContattiPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setFormStatus('submitting');
+    
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+    const formspreeId = process.env.NEXT_PUBLIC_FORMSPREE_KEY || 'YOUR_FORMSPREE_ID';
 
-    // Simulate Formspree submission delay
-    setTimeout(() => {
-      setFormStatus('success');
-      (e.target as HTMLFormElement).reset();
+    try {
+      const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
 
-      // Reset success message after 5 seconds
-      setTimeout(() => setFormStatus('idle'), 5000);
-    }, 1200);
+      if (response.ok) {
+        setFormStatus('success');
+        (e.target as HTMLFormElement).reset();
+        setTimeout(() => setFormStatus('idle'), 5000);
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -121,6 +137,12 @@ export default function ContattiPage() {
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.8rem', color: 'var(--navy)', marginBottom: '2rem' }}>
               Invia un messaggio
             </h2>
+
+            {formStatus === 'error' && (
+              <div style={{ padding: '1rem', background: '#fef2f2', border: '1px solid #fecaca', color: '#991b1b', marginBottom: '1.5rem', textAlign: 'center' }}>
+                Si è verificato un errore. Per favore, riprova o scrivimi direttamente via email.
+              </div>
+            )}
 
             {formStatus === 'success' ? (
               <motion.div
