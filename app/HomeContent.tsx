@@ -47,7 +47,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
   return (
     <>
       {/* ── HERO ── */}
-      <section className="hero-section" style={{
+      <section style={{
         minHeight: 'calc(100vh - 72px)',
         background: 'linear-gradient(135deg, #1e4d3b 0%, #2a6b52 60%, #163a2c 100%)',
         display: 'flex',
@@ -63,9 +63,15 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
           pointerEvents: 'none',
         }} />
 
-        <div className="container hero-grid">
+        <div className="container" style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '4rem',
+          alignItems: 'center',
+          padding: '6rem 1.5rem',
+        }}>
           {/* Text */}
-          <div className="hero-text">
+          <div>
             <motion.p
               custom={0}
               initial="hidden"
@@ -155,7 +161,11 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="hero-image-container"
+            style={{
+              position: 'relative',
+              display: 'flex',
+              justifyContent: 'center',
+            }}
           >
             <div style={{
               position: 'relative',
@@ -176,7 +186,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
               }} />
               <Image
                 src="/chiara-portrait.png"
-                alt="Chiara Scerba"
+                alt="Chiara Scerba – Giornalista e Consulente di Comunicazione"
                 width={380}
                 height={480}
                 sizes="(max-width: 768px) 100vw, 380px"
@@ -186,6 +196,7 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
                   objectFit: 'cover',
                   position: 'relative',
                   zIndex: 2,
+                  filter: 'grayscale(10%)',
                 }}
                 priority
               />
@@ -198,9 +209,23 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="stats-bar"
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            background: 'rgba(0,0,0,0.25)',
+            backdropFilter: 'blur(8px)',
+            borderTop: '1px solid rgba(201,169,110,0.2)',
+          }}
         >
-          <div className="container stats-container">
+          <div className="container" style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '4rem',
+            flexWrap: 'wrap',
+            padding: '1.5rem',
+          }}>
             {[
               { value: '3+', label: 'Anni di esperienza' },
               { value: '200+', label: 'Articoli pubblicati' },
@@ -320,12 +345,12 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
         </div>
       </section>
 
-      {/* ── SERVIZI ── */}
-      <section id="servizi" className="section" style={{ background: 'var(--surface)' }}>
+      {/* ── SERVICES ── */}
+      <section className="section" style={{ background: 'var(--surface)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
             <p style={{
-              fontSize: '0.85rem',
+              fontSize: '0.75rem',
               letterSpacing: '0.15em',
               textTransform: 'uppercase',
               color: 'var(--gold)',
@@ -333,33 +358,42 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
               fontWeight: 600,
               marginBottom: '0.75rem',
             }}>
-              Come posso aiutarti
+              Cosa faccio
             </p>
-            <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.8rem)', marginBottom: '1.5rem' }}>Aree di Competenza</h2>
-            <div className="divider" style={{ margin: '0 auto' }} />
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.5rem)' }}>Servizi</h2>
+            <div className="divider" style={{ margin: '1rem auto' }} />
           </div>
 
-          <div className="services-grid">
-            {services.map((service, i) => (
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '2rem',
+          }}>
+            {services.map((s, i) => (
               <motion.div
-                key={service.title}
+                key={s.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: 0.5, delay: i * 0.12 }}
                 style={{
-                  padding: '2.5rem',
-                  border: '1px solid var(--border)',
-                  background: 'white',
-                  transition: 'all 0.3s ease',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.02)',
+                  padding: '2.5rem 2rem',
+                  borderTop: '3px solid var(--gold)',
+                  background: 'var(--bg)',
+                  transition: 'box-shadow 0.25s ease',
                 }}
               >
-                <div style={{ color: 'var(--gold)', marginBottom: '1.5rem' }}>
-                  {service.icon}
-                </div>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>{service.title}</h3>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>{service.desc}</p>
+                <div style={{ color: 'var(--gold)', marginBottom: '1.25rem' }}>{s.icon}</div>
+                <h3 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: '1.3rem',
+                  marginBottom: '0.75rem',
+                }}>
+                  {s.title}
+                </h3>
+                <p style={{ fontSize: '0.9rem', color: 'var(--text-muted)', lineHeight: 1.7 }}>
+                  {s.desc}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -393,71 +427,6 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
           </Link>
         </div>
       </section>
-
-      <style jsx>{`
-        .hero-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: center;
-          padding: 6rem 1.5rem;
-        }
-        .stats-container {
-          display: flex;
-          justify-content: center;
-          gap: 4rem;
-          flex-wrap: wrap;
-          padding: 1.5rem;
-        }
-        .services-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 2.5rem;
-        }
-        .stats-bar {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          background: rgba(0,0,0,0.25);
-          backdrop-filter: blur(8px);
-          border-top: 1px solid rgba(201,169,110,0.2);
-        }
-
-        @media (max-width: 992px) {
-          .hero-grid {
-            grid-template-columns: 1fr;
-            text-align: center;
-            gap: 3rem;
-            padding: 4rem 1.5rem 8rem;
-          }
-          .hero-text {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-          }
-          .hero-image-container {
-            order: -1;
-          }
-          .stats-bar {
-            position: relative;
-          }
-          .stats-container {
-            gap: 2rem;
-          }
-        }
-
-        @media (max-width: 480px) {
-          .hero-section {
-             min-height: auto !important;
-          }
-          .stats-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-          }
-        }
-      `}</style>
     </>
   );
 }
