@@ -3,11 +3,10 @@ import { client } from '@/lib/sanity.client';
 import { projectsQuery } from '@/lib/sanity.queries';
 import ProjectsList from './ProjectsList';
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-static';
 
 export default async function ProgettiPage() {
   const projects = await client.fetch(projectsQuery);
-  console.log("Progetti recuperati da Sanity:", projects.length);
 
   return (
     <>
