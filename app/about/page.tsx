@@ -122,10 +122,17 @@ export default function AboutPage() {
             }} />
             <Image
               src="/chiara-portrait.png"
-              alt="Chiara Rossi"
+              alt="Chiara Scerba"
               width={440}
               height={540}
-              style={{ objectFit: 'cover', width: '100%', height: 'auto', position: 'relative', zIndex: 1 }}
+              sizes="(max-width: 768px) 100vw, 440px"
+              style={{
+                width: '100%',
+                height: 'auto',
+                objectFit: 'cover',
+                position: 'relative',
+                zIndex: 1
+              }}
             />
           </motion.div>
 
@@ -137,7 +144,7 @@ export default function AboutPage() {
           >
             <div className="divider" />
             <h2 style={{ fontSize: '2rem', marginTop: '1.5rem', marginBottom: '1.5rem' }}>
-              Chiara Rossi
+              Chiara Scerba
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#374151', marginBottom: '1.25rem' }}>
               Sono una giornalista e consulente di comunicazione con oltre dieci anni di esperienza nelle principali testate economiche italiane — dal <em>Corriere della Sera</em> a <em>Il Sole 24 Ore</em> — e in alcuni dei brand più rilevanti del panorama nazionale.

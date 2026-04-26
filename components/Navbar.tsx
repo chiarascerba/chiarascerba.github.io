@@ -35,7 +35,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" style={{ textDecoration: 'none' }}>
           <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '1.35rem', fontWeight: 700, color: 'var(--navy)', letterSpacing: '-0.01em' }}>
-            Chiara Rossi
+            Chiara Scerba
           </span>
           <span style={{ display: 'block', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', fontFamily: "'Inter', sans-serif", fontWeight: 500, marginTop: '-2px' }}>
             Giornalista & Consulente

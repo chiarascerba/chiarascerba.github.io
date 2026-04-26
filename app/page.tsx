@@ -179,13 +179,14 @@ export default function HomePage() {
               }} />
               <Image
                 src="/chiara-portrait.png"
-                alt="Chiara Rossi – Giornalista e Consulente di Comunicazione"
+                alt="Chiara Scerba – Giornalista e Consulente di Comunicazione"
                 width={380}
                 height={480}
+                sizes="(max-width: 768px) 100vw, 380px"
                 style={{
-                  objectFit: 'cover',
                   width: '100%',
                   height: 'auto',
+                  objectFit: 'cover',
                   position: 'relative',
                   zIndex: 2,
                   filter: 'grayscale(10%)',

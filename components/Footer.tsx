@@ -27,7 +27,7 @@ export default function Footer() {
               color: 'white',
               marginBottom: '0.5rem',
             }}>
-              Chiara Rossi
+              Chiara Scerba
             </h3>
             <p style={{
               fontSize: '0.75rem',
@@ -152,7 +152,7 @@ export default function Footer() {
           fontSize: '0.8rem',
           color: 'rgba(255,255,255,0.4)',
         }}>
-          <span>© {year} Chiara Rossi. Tutti i diritti riservati.</span>
+          <span>© {year} Chiara Scerba. Tutti i diritti riservati.</span>
           <span>Giornalismo · Comunicazione · Consulenza</span>
         </div>
       </div>
