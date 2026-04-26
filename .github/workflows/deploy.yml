@@ -37,6 +37,10 @@ jobs:
         run: npm ci
       - name: Build with Next.js
         run: npx next build
+        env:
+          NEXT_PUBLIC_FORMSPREE_URL: ${{ secrets.NEXT_PUBLIC_FORMSPREE_URL || vars.NEXT_PUBLIC_FORMSPREE_URL }}
+          NEXT_PUBLIC_SANITY_PROJECT_ID: ${{ secrets.NEXT_PUBLIC_SANITY_PROJECT_ID || vars.NEXT_PUBLIC_SANITY_PROJECT_ID }}
+          NEXT_PUBLIC_SANITY_DATASET: ${{ secrets.NEXT_PUBLIC_SANITY_DATASET || vars.NEXT_PUBLIC_SANITY_DATASET }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
