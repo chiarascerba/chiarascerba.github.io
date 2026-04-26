@@ -1,12 +1,13 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, CheckCircle2 } from 'lucide-react';
-import { projects } from '@/data/projects';
+import { client } from '@/lib/sanity.client';
+import { projectsQuery, projectBySlugQuery } from '@/lib/sanity.queries';
 import type { Metadata } from 'next';
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const p = await params;
-  const project = projects.find((p_item) => p_item.slug === p.slug);
+  const project = await client.fetch(projectBySlugQuery, { slug: p.slug });
   
   if (!project) return { title: 'Progetto Non Trovato' };
   
@@ -16,15 +17,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
-  return projects.map((project) => ({
+  const projects = await client.fetch(projectsQuery);
+  return projects.map((project: any) => ({
     slug: project.slug,
-  }));
+  })) || [];
 }
 
 export default async function ProjectDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const p = await params;
-  const project = projects.find((p_item) => p_item.slug === p.slug);
+  const project = await client.fetch(projectBySlugQuery, { slug: p.slug });
 
   if (!project) {
     notFound();
@@ -100,7 +104,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
             <div>
               <h3 style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--text-muted)', marginBottom: '0.5rem' }}>Servizi</h3>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
-                {project.tags.map(tag => (
+                {project.tags?.map((tag: string) => (
                   <span key={tag} style={{ fontSize: '0.8rem', color: 'var(--navy)', background: 'var(--border-light)', padding: '0.2rem 0.5rem', borderRadius: '4px' }}>
                     {tag}
                   </span>
@@ -144,7 +148,7 @@ export default async function ProjectDetailPage({ params }: { params: Promise<{ 
               I Risultati
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              {project.results.map((result, i) => (
+              {project.results?.map((result: string, i: number) => (
                 <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                   <CheckCircle2 size={24} style={{ color: 'var(--gold)', flexShrink: 0, marginTop: '0.1rem' }} />
                   <p style={{ fontSize: '1.05rem', lineHeight: 1.6, color: 'var(--text)' }}>
