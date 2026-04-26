@@ -37,7 +37,7 @@ export default function Footer() {
               marginBottom: '1rem',
               fontFamily: "'Inter', sans-serif",
             }}>
-              Giornalista & Consulente di Comunicazione
+              Giornalista & Content Strategist
             </p>
             <p style={{ fontSize: '0.9rem', lineHeight: 1.7, maxWidth: '280px' }}>
               Raccontare il business attraverso le parole. Con rigore giornalistico e sensibilità strategica.
