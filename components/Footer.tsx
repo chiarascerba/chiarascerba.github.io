@@ -95,11 +95,11 @@ export default function Footer() {
               Contatti
             </h4>
             <a
-              href="mailto:chiara@example.com"
+              href="mailto:chiara.scerba@gmail.com"
               style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.9rem', color: 'rgba(255,255,255,0.7)', marginBottom: '1.5rem' }}
             >
               <Mail size={16} />
-              chiara@example.com
+              chiara.scerba@gmail.com
             </a>
 
             {/* Social */}
