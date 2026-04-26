@@ -12,22 +12,16 @@ const timelineItems = [
     desc: 'Consulenza strategica per aziende quotate e startup in ambito media relations, brand voice e crisis communication.',
   },
   {
-    year: '2019',
+    year: '2021',
     role: 'Redattrice Economica',
     company: 'Il Sole 24 Ore',
     desc: 'Responsabile della copertura del settore manifatturiero e dell\'economia circolare. Autrice di inchieste premiate a livello nazionale.',
   },
   {
-    year: '2015',
+    year: '2019',
     role: 'Giornalista',
     company: 'Corriere della Sera – Economia',
     desc: 'Reportage e interviste ai CEO delle principali aziende italiane. Focus su finanza d\'impresa e mercati internazionali.',
-  },
-  {
-    year: '2012',
-    role: 'Praticante Giornalista',
-    company: 'La Repubblica',
-    desc: 'Formazione giornalistica completa in redazione. Dalla cronaca locale all\'economia, passando per la cultura.',
   },
 ];
 
@@ -98,12 +92,7 @@ export default function AboutPage() {
 
       {/* ── BIO ── */}
       <section className="section" style={{ background: 'var(--bg)' }}>
-        <div className="container" style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.6fr',
-          gap: '5rem',
-          alignItems: 'start',
-        }}>
+        <div className="container bio-grid">
           <motion.div
             initial={{ opacity: 0, x: -24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -143,11 +132,11 @@ export default function AboutPage() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <div className="divider" />
-            <h2 style={{ fontSize: '2rem', marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 3vw, 2.2rem)', marginTop: '1.5rem', marginBottom: '1.5rem' }}>
               Chiara Scerba
             </h2>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#374151', marginBottom: '1.25rem' }}>
-              Sono una giornalista e consulente di comunicazione con oltre dieci anni di esperienza nelle principali testate economiche italiane — dal <em>Corriere della Sera</em> a <em>Il Sole 24 Ore</em> — e in alcuni dei brand più rilevanti del panorama nazionale.
+              Sono una giornalista e consulente di comunicazione con esperienza nelle principali testate economiche italiane — dal <em>Corriere della Sera</em> a <em>Il Sole 24 Ore</em> — e in alcuni dei brand più rilevanti del panorama nazionale.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#374151', marginBottom: '1.25rem' }}>
               Ho raccontato l&apos;evoluzione del tessuto industriale italiano, intervistato CEO e imprenditori di prima fila, coperto crisi aziendali e trasformazioni di mercato con la stessa attenzione che riservo a ogni virgola.
@@ -192,16 +181,9 @@ export default function AboutPage() {
             <div className="divider" style={{ margin: '1rem auto' }} />
           </div>
 
-          <div style={{ maxWidth: '700px', margin: '0 auto', position: 'relative' }}>
+          <div className="timeline-wrapper">
             {/* vertical line */}
-            <div style={{
-              position: 'absolute',
-              left: '80px',
-              top: 0,
-              bottom: 0,
-              width: '1px',
-              background: 'var(--border)',
-            }} />
+            <div className="timeline-line" />
 
             {timelineItems.map((item, i) => (
               <motion.div
@@ -210,37 +192,14 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '80px 1fr',
-                  gap: '2rem',
-                  marginBottom: '3rem',
-                  alignItems: 'start',
-                }}
+                className="timeline-item"
               >
-                <div style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: '0.95rem',
-                  fontWeight: 700,
-                  color: 'var(--gold)',
-                  textAlign: 'right',
-                  paddingTop: '0.25rem',
-                }}>
+                <div className="timeline-year">
                   {item.year}
                 </div>
-                <div style={{ paddingLeft: '2rem', position: 'relative' }}>
+                <div className="timeline-content">
                   {/* dot */}
-                  <div style={{
-                    position: 'absolute',
-                    left: '-0.5rem',
-                    top: '0.4rem',
-                    width: '10px',
-                    height: '10px',
-                    borderRadius: '50%',
-                    background: 'var(--gold)',
-                    border: '2px solid var(--surface)',
-                    boxShadow: '0 0 0 2px var(--gold)',
-                  }} />
+                  <div className="timeline-dot" />
                   <h3 style={{ fontSize: '1.05rem', marginBottom: '0.25rem' }}>{item.role}</h3>
                   <p style={{
                     fontSize: '0.8rem',
@@ -284,7 +243,7 @@ export default function AboutPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
             gap: '2rem',
           }}>
             {values.map((v, i) => (
@@ -308,6 +267,86 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <style jsx>{`
+        .bio-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.6fr;
+          gap: 5rem;
+          align-items: start;
+        }
+        .timeline-wrapper {
+          max-width: 700px;
+          margin: 0 auto;
+          position: relative;
+        }
+        .timeline-line {
+          position: absolute;
+          left: 80px;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          background: var(--border);
+        }
+        .timeline-item {
+          display: grid;
+          grid-template-columns: 80px 1fr;
+          gap: 2rem;
+          marginBottom: 3rem;
+          align-items: start;
+        }
+        .timeline-year {
+          font-family: 'Playfair Display', serif;
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: var(--gold);
+          text-align: right;
+          padding-top: 0.25rem;
+        }
+        .timeline-content {
+          padding-left: 2rem;
+          position: relative;
+        }
+        .timeline-dot {
+          position: absolute;
+          left: -0.5rem;
+          top: 0.4rem;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: var(--gold);
+          border: 2px solid var(--surface);
+          box-shadow: 0 0 0 2px var(--gold);
+        }
+
+        @media (max-width: 992px) {
+          .bio-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+        }
+
+        @media (max-width: 640px) {
+          .timeline-line {
+            left: 20px;
+          }
+          .timeline-item {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+            margin-bottom: 2.5rem;
+          }
+          .timeline-year {
+            text-align: left;
+            padding-left: 3.5rem;
+          }
+          .timeline-content {
+            padding-left: 3.5rem;
+          }
+          .timeline-dot {
+            left: -1rem;
+          }
+        }
+      `}</style>
     </>
   );
 }

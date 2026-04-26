@@ -56,12 +56,20 @@ export default function ContattiPage() {
         background: 'var(--bg)',
         padding: '5rem 0',
       }}>
-        <div className="container" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
-          gap: '5rem',
-          alignItems: 'start',
-        }}>
+        <div className="container contact-grid">
+<style jsx>{`
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    align-items: start;
+  }
+  @media (min-width: 992px) {
+    .contact-grid {
+      gap: 5rem;
+    }
+  }
+`}</style>
 
           {/* Left Column - Info */}
           <motion.div
