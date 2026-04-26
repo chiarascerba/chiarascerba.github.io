@@ -18,17 +18,17 @@ const services = [
   {
     icon: <Feather size={28} />,
     title: 'Giornalismo',
-    desc: 'Reportage, interviste e analisi. Specializzata in Affari Europei, Cronaca Italiana.',
+    desc: 'Reportage, interviste e analisi. Specializzata in Politica internazionale, Affari Europei e Cronaca.',
   },
   {
     icon: <Building2 size={28} />,
     title: 'Comunicazione Aziendale',
-    desc: 'Brand voice, crisis communication e media relations per aziende che vogliono costruire una reputazione solida.',
+    desc: 'Strategie di brand, gestione delle relazioni con i media e comunicazione per aziende che vogliono costruire una solida reputazione.',
   },
   {
     icon: <Megaphone size={28} />,
     title: 'Content Strategy',
-    desc: 'Progettazione di ecosistemi editoriali: blog, newsletter, white paper e contenuti thought leadership.',
+    desc: 'Progettazione di piani editoriali: blog, newsletter, social media e contenuti per raccontare il business aziendale.',
   },
 ];
 
@@ -228,8 +228,8 @@ export default function HomeContent({ featuredArticles }: { featuredArticles: Ar
           }}>
             {[
               { value: '3+', label: 'Anni di esperienza' },
-              { value: '40+', label: 'Articoli pubblicati' },
-              { value: '1+', label: 'Testate collaborate' },
+              { value: '200+', label: 'Articoli pubblicati' },
+              { value: '2+', label: 'Testate collaborate' },
               { value: '2+', label: 'Aziende clienti' },
             ].map((stat) => (
               <div key={stat.label} style={{ textAlign: 'center' }}>

@@ -38,7 +38,7 @@ export default function Navbar() {
             Chiara Scerba
           </span>
           <span style={{ display: 'block', fontSize: '0.65rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--gold)', fontFamily: "'Inter', sans-serif", fontWeight: 500, marginTop: '-2px' }}>
-            Giornalista & Consulente
+            Giornalista & Content Strategist
           </span>
         </Link>
 
